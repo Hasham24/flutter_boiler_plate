@@ -4,9 +4,8 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
-  final AuthDataSource authDataSource;
-
   AuthRepoImpl({required this.authDataSource});
+  final AuthDataSource authDataSource;
 
   @override
   Future<dynamic> login(dynamic request) async {

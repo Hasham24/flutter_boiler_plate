@@ -3,14 +3,14 @@ import 'package:boiler_plate/data/data_sources/local_data_source/local_storage_r
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
+
 @LazySingleton()
 class LanguageManager extends GetxController {
+  LanguageManager(this._localStorage);
   static LanguageManager get to => Get.find<LanguageManager>();
 
   final LocalStorageRepository _localStorage;
   final RxString _currentLanguage = 'en'.obs;
-
-  LanguageManager(this._localStorage);
 
   String get currentLanguage => _currentLanguage.value;
   bool get isRTL => _currentLanguage.value == 'ar';
@@ -19,19 +19,20 @@ class LanguageManager extends GetxController {
   void onInit() {
     super.onInit();
     // Initialize language from storage
-    final savedLanguage = _localStorage.getString(StorageKeys.languageKey) ?? 'en';
+    final savedLanguage =
+        _localStorage.getString(StorageKeys.languageKey) ?? 'en';
     _currentLanguage.value = savedLanguage;
   }
 
   void setLanguage(String langCode) {
     if (langCode == _currentLanguage.value) return;
-    
+
     // Save to storage
     _localStorage.saveString(StorageKeys.languageKey, langCode);
-    
+
     // Update reactive variable
     _currentLanguage.value = langCode;
-    
+
     // Update GetX locale for RTL and system-wide language change
     final locale = Locale(langCode);
     Get.updateLocale(locale);

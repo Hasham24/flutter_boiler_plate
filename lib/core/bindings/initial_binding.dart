@@ -18,6 +18,6 @@ class InitialBinding extends Bindings {
 
   void _registerControllers() {
     // auth controllers bindings
-    Get.lazyPut<LoginController>(() => LoginController(), fenix: true);
+    Get.lazyPut<LoginController>(LoginController.new, fenix: true);
   }
 }

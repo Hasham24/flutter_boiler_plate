@@ -6,10 +6,9 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AuthDataSource)
 class AuthDataSourceImp implements AuthDataSource {
-  final HttpClient _httpClient;
-
   AuthDataSourceImp({required HttpClient httpClient})
     : _httpClient = httpClient;
+  final HttpClient _httpClient;
 
   @override
   Future<dynamic> login(dynamic request) async {

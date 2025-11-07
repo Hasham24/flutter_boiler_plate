@@ -4,9 +4,8 @@ import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class StorageService {
-  final LocalStorageRepository _localStorage;
-
   StorageService(this._localStorage);
+  final LocalStorageRepository _localStorage;
 
   // ---------- User ----------
   Future<void> saveUserId(String userId) async {

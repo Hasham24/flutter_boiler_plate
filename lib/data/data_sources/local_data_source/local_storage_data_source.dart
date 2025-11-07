@@ -1,13 +1,12 @@
 // lib/data/data_sources/local/local_storage_data_source.dart
 import 'package:get_storage/get_storage.dart';
 import 'package:injectable/injectable.dart';
-import 'local_storage_repository.dart';
+import 'package:boiler_plate/data/data_sources/local_data_source/local_storage_repository.dart';
 
 @LazySingleton(as: LocalStorageRepository)
 class LocalStorageDataSource implements LocalStorageRepository {
-  final GetStorage _storage;
-
   LocalStorageDataSource(this._storage);
+  final GetStorage _storage;
 
   @override
   Future<void> saveString(String key, String value) async {

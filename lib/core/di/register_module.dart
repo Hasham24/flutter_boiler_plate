@@ -5,14 +5,14 @@ import 'package:boiler_plate/core/constants/app_env.dart';
 
 @module
 abstract class RegisterModule {
-  @Named("BaseUrl")
+  @Named('BaseUrl')
   String get baseUrl => AppEnv.baseUrl; // Replace with your API
 
-  @Named("ConnectTimeout")
+  @Named('ConnectTimeout')
   Duration get connectTimeout => const Duration(seconds: 15);
 
-  @Named("ReceiveTimeout")
+  @Named('ReceiveTimeout')
   Duration get receiveTimeout => const Duration(seconds: 15);
-   @lazySingleton
+  @lazySingleton
   GetStorage get getStorage => GetStorage();
 }

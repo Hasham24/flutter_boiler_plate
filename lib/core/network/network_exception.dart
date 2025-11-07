@@ -1,17 +1,5 @@
 /// Custom network exception for handling API errors
 class NetworkException implements Exception {
-  final String message;
-  final int? statusCode;
-  final String? url;
-  final dynamic originalError;
-
-  const NetworkException({
-    required this.message,
-    this.statusCode,
-    this.url,
-    this.originalError,
-  });
-
   /// Create exception from Dio error
   factory NetworkException.fromDioError(dynamic error) {
     if (error is Exception) {
@@ -82,6 +70,17 @@ class NetworkException implements Exception {
       statusCode: 404,
     );
   }
+
+  const NetworkException({
+    required this.message,
+    this.statusCode,
+    this.url,
+    this.originalError,
+  });
+  final String message;
+  final int? statusCode;
+  final String? url;
+  final dynamic originalError;
 
   /// Get user-friendly error message based on status code
   static String _getErrorMessage(dynamic error) {

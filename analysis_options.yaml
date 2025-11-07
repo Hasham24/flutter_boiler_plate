@@ -1,28 +1,85 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
-  rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+  errors:
+    unused_import: error
+    dead_code: warning
+    duplicate_import: warning
+
+  exclude:
+    - "build/**"
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+
+linter:
+  rules:
+    # ----- STYLE & CONSISTENCY -----
+    always_declare_return_types: true
+    always_use_package_imports: true
+    prefer_single_quotes: true
+    prefer_const_declarations: true
+    prefer_const_constructors: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    avoid_renaming_method_parameters: true
+    sort_child_properties_last: true
+    avoid_unnecessary_containers: true
+
+    # ----- SAFETY -----
+    avoid_print: true
+    avoid_empty_else: true
+    avoid_returning_null_for_future: true
+    avoid_slow_async_io: true
+    unnecessary_null_checks: true
+
+    # ----- CLEAN CODE -----
+    lines_longer_than_80_chars: false # allow >80 chars
+    curly_braces_in_flow_control_structures: true
+    avoid_redundant_argument_values: true
+    avoid_bool_literals_in_conditional_expressions: true
+    unnecessary_lambdas: true
+    unnecessary_parenthesis: true
+    unnecessary_string_interpolations: true
+
+    # ----- NAMING -----
+    camel_case_types: true
+    file_names: true
+    library_names: true
+    constant_identifier_names: true
+
+    # ----- FLUTTER BEST PRACTICES -----
+    use_key_in_widget_constructors: true
+    sort_constructors_first: true
+    sized_box_for_whitespace: true
+    prefer_constructors_over_static_methods: true
+    prefer_spread_collections: true
+    prefer_if_elements_to_conditional_expressions: true
+
+    # ----- PERFORMANCE -----
+    prefer_interpolation_to_compose_strings: true
+    avoid_function_literals_in_foreach_calls: true
+
+    # ----- DOCUMENTATION -----
+    slash_for_doc_comments: true
+    public_member_api_docs: false # turn on if you want strict documentation
+
+# Optional: dart_code_metrics
+dart_code_metrics:
+  extend_rules:
+    - prefer-trailing-comma
+  rules:
+    - no-boolean-literal-compare
+    - no-empty-block
+    - no-equal-then-else
+    - prefer-async-await
+    - avoid-nested-conditional-expressions
+    - avoid-long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    maximum-nesting-level: 5
+    source-lines-of-code: 150

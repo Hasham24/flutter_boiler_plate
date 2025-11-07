@@ -7,7 +7,7 @@ abstract class BaseController extends GetxController {
   // Loading state management
   final RxBool _isLoading = false.obs;
   final RxBool _isButtonLoading = false.obs;
-  final RxString errorMessage = "".obs;
+  final RxString errorMessage = ''.obs;
 
   /// Getter for loading state
   bool get isLoading => _isLoading.value;
@@ -91,11 +91,7 @@ abstract class BaseController extends GetxController {
 
   /// Show info message
   void showInfo(String message) {
-    Get.snackbar(
-      'Info',
-      message,
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    Get.snackbar('Info', message, snackPosition: SnackPosition.BOTTOM);
   }
 
   /// Navigate to route

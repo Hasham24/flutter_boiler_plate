@@ -9,7 +9,7 @@ import 'package:boiler_plate/data/data_sources/local_data_source/local_storage_r
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
-import 'core/router/app_routes.dart';
+import 'package:boiler_plate/core/router/app_routes.dart';
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 

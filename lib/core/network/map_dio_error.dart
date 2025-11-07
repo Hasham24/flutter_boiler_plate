@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 
-import 'network_exception.dart';
+import 'package:boiler_plate/core/network/network_exception.dart';
 
 /// Map a DioException to a user-friendly NetworkException
 NetworkException mapDioError(DioException error) {

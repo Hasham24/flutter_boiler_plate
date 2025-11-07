@@ -9,14 +9,10 @@ import 'package:get_storage/get_storage.dart';
 
 @LazySingleton(as: HttpClient)
 class DioHttpClient implements HttpClient {
-  final Dio _dio;
-
-  DioHttpClient._(this._dio);
-
   factory DioHttpClient(
-    @Named("BaseUrl") String baseUrl,
-    @Named("ConnectTimeout") Duration connectTimeout,
-    @Named("ReceiveTimeout") Duration receiveTimeout,
+    @Named('BaseUrl') String baseUrl,
+    @Named('ConnectTimeout') Duration connectTimeout,
+    @Named('ReceiveTimeout') Duration receiveTimeout,
   ) {
     final options = BaseOptions(
       baseUrl: baseUrl,
@@ -36,7 +32,7 @@ class DioHttpClient implements HttpClient {
           final box = GetStorage();
           final token = box.read<String>(StorageKeys.authToken) ?? '';
           final lang = box.read<String>(StorageKeys.languageKey) ?? 'en';
-          
+
           options.headers.addAll({
             'Authorization': token.isNotEmpty ? token : 'UP!and\$',
             'app_id': '1',
@@ -55,6 +51,8 @@ class DioHttpClient implements HttpClient {
 
     return DioHttpClient._(dio);
   }
+  DioHttpClient._(this._dio);
+  final Dio _dio;
 
   @override
   Future<T> get<T>(
@@ -133,10 +131,7 @@ class DioHttpClient implements HttpClient {
       if (mapSuccess != null) return mapSuccess(r.data);
       return r.data as T;
     } else {
-      throw NetworkException(
-        message: 'HTTP error',
-        statusCode: status,
-      );
+      throw NetworkException(message: 'HTTP error', statusCode: status);
     }
   }
 
